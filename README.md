@@ -22,21 +22,18 @@ The application expects data in STDIN format and will return json in STDOUT form
 Examples below:
 
 ### Using Go Run
-You can run the commands below to run the application
+You can run the commands below to run the application.
 ```shell
 go run cmd/main.go
 ```
 ```shell
-go run cmd/main.go < resources/logfile 
+go run cmd/main.go < resources/qgames.log 
 ```
 
 ### Using Docker
-Just run the docker commands below to create the docker image and run the container.
+Just run the docker commands below.
 ``` shell
-docker run -it --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock golang:1.22.0 go run cmd/main.go
-```
-``` shell
-docker run -i --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock golang:1.22.0 go run cmd/main.go < resources/logfile
+docker run -i --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock golang:1.22.0 go run cmd/main.go < resources/qgames.log
 ```
 
 ## How to run the tests
