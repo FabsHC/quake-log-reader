@@ -21,19 +21,15 @@ func main() {
 
 func readFileLineByLine() {
 	fmt.Println("Processing...")
-	var err error
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
-		err = validateEvent.Execute(scanner.Text())
-		if err != nil {
-			fmt.Printf("Error while processing log events: %s\n", err.Error())
-		}
+		validateEvent.Execute(scanner.Text())
 	}
 	validateEvent.FinishOpenGames()
 }
 
 func printReport() {
 	report := validateEvent.GetAllGamesResult()
-	fmt.Printf("Done, total matches: %v report below: ", len(report))
+	fmt.Printf("Done, total matches: %v report below:\n", len(report))
 	_ = json.NewEncoder(os.Stdout).Encode(report)
 }
