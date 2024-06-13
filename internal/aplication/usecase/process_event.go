@@ -17,26 +17,21 @@ func NewProcessEventUseCase() *ProcessEventUseCase {
 	}
 }
 
-func (pe *ProcessEventUseCase) Execute(logMessage string) error {
+func (pe *ProcessEventUseCase) Execute(logMessage string) {
 	if len(logMessage) == 0 {
-		return nil
+		return
 	}
-
 	switch {
 	case util.IsGameStarting(logMessage):
 		closeActualGame(pe)
 		startNewGame(pe)
-	case util.IsGameFinished(logMessage):
-		closeActualGame(pe)
 	case util.IsKillLog(logMessage):
-		if err := processKillEvent(pe, logMessage); err != nil {
-			return err
-		}
+		processKillEvent(pe, logMessage)
+		pe.actualGame.TotalKills++
 	}
-	return nil
 }
 
-func processKillEvent(pe *ProcessEventUseCase, logMessage string) error {
+func processKillEvent(pe *ProcessEventUseCase, logMessage string) {
 	killer, victim, cause := util.ExtractKillData(logMessage)
 	if !strings.EqualFold(util.WORLD, killer) {
 		pe.actualGame.AddTotalPlayers(killer)
@@ -49,16 +44,13 @@ func processKillEvent(pe *ProcessEventUseCase, logMessage string) error {
 		pe.actualGame.ProcessKills(victim, -1)
 	}
 	pe.actualGame.ProcessKillsByMean(cause)
-	pe.actualGame.TotalKills += 1
-	return nil
 }
 
-func (pe *ProcessEventUseCase) GetAllGamesResult() []*model.GameInfo {
-	return pe.reports
-}
-
-func (pe *ProcessEventUseCase) FinishOpenGames() {
-	closeActualGame(pe)
+func startNewGame(pe *ProcessEventUseCase) {
+	if pe.actualGame != nil {
+		closeActualGame(pe)
+	}
+	pe.actualGame = model.CreateGameInfo()
 }
 
 func closeActualGame(pe *ProcessEventUseCase) {
@@ -68,6 +60,10 @@ func closeActualGame(pe *ProcessEventUseCase) {
 	}
 }
 
-func startNewGame(pe *ProcessEventUseCase) {
-	pe.actualGame = model.CreateGameInfo()
+func (pe *ProcessEventUseCase) GetAllGamesResult() []*model.GameInfo {
+	return pe.reports
+}
+
+func (pe *ProcessEventUseCase) FinishOpenGames() {
+	closeActualGame(pe)
 }
