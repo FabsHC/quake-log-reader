@@ -55,6 +55,12 @@ But when <world> kill a player, that player loses -1 kill score. Example log:
 ```
  21:42 Kill: 1022 2 22: <world> killed Isgalamido by MOD_TRIGGER_HURT
 ```
+
+When a player kills itself, the killing score is not affected.
+```
+ 22:18 Kill: 2 2 7: Isgalamido killed Isgalamido by MOD_ROCKET_SPLASH
+```
+
 ## Project Organization
 ```
 .

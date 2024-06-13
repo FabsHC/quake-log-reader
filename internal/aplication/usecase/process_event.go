@@ -40,7 +40,10 @@ func processKillEvent(pe *ProcessEventUseCase, logMessage string) error {
 	killer, victim, cause := util.ExtractKillData(logMessage)
 	if !strings.EqualFold(util.WORLD, killer) {
 		pe.actualGame.AddTotalPlayers(killer)
-		pe.actualGame.ProcessKills(killer, 1)
+		pe.actualGame.AddTotalPlayers(victim)
+		if !strings.EqualFold(killer, victim) {
+			pe.actualGame.ProcessKills(killer, 1)
+		}
 	} else {
 		pe.actualGame.AddTotalPlayers(victim)
 		pe.actualGame.ProcessKills(victim, -1)
@@ -52,6 +55,10 @@ func processKillEvent(pe *ProcessEventUseCase, logMessage string) error {
 
 func (pe *ProcessEventUseCase) GetAllGamesResult() []*model.GameInfo {
 	return pe.reports
+}
+
+func (pe *ProcessEventUseCase) FinishOpenGames() {
+	closeActualGame(pe)
 }
 
 func closeActualGame(pe *ProcessEventUseCase) {

@@ -21,6 +21,9 @@ func (g *GameInfo) AddTotalPlayers(playerName string) {
 	if !slices.Contains(g.Players, playerName) {
 		g.Players = append(g.Players, playerName)
 	}
+	if _, ok := g.Kills[playerName]; !ok {
+		g.Kills[playerName] = 0
+	}
 }
 
 func (g *GameInfo) ProcessKills(playerName string, point int) {

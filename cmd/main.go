@@ -29,6 +29,7 @@ func readFileLineByLine() {
 			fmt.Printf("Error while processing log events: %s\n", err.Error())
 		}
 	}
+	validateEvent.FinishOpenGames()
 }
 
 func printReport() {
