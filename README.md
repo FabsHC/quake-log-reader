@@ -1,6 +1,8 @@
 # quake-log-reader
 ![quake-log-reader](https://img.shields.io/badge/quake--log--reader-gray?logo=go)
-![technology Go 1.22.0](https://img.shields.io/badge/technology-go%201.22.0-blue.svg)
+![technology Go 1.22](https://img.shields.io/badge/technology-go%201.22-blue.svg)
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+
 
 ## Technology
 The technology used is the Go language in version 1.22.0.
