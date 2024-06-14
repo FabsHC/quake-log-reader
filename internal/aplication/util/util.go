@@ -9,10 +9,6 @@ func IsGameStarting(logMessage string) bool {
 	return containsIgnoreCase(logMessage, INIT_GAME)
 }
 
-func IsGameFinished(logMessage string) bool {
-	return containsIgnoreCase(logMessage, SHUTDOWN_GAME)
-}
-
 func IsKillLog(logMessage string) bool {
 	return containsIgnoreCase(logMessage, KILL)
 }

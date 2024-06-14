@@ -23,7 +23,6 @@ func (pe *ProcessEventUseCase) Execute(logMessage string) {
 	}
 	switch {
 	case util.IsGameStarting(logMessage):
-		closeActualGame(pe)
 		startNewGame(pe)
 	case util.IsKillLog(logMessage):
 		processKillEvent(pe, logMessage)
@@ -62,6 +61,10 @@ func closeActualGame(pe *ProcessEventUseCase) {
 
 func (pe *ProcessEventUseCase) GetAllGamesResult() []*model.GameInfo {
 	return pe.reports
+}
+
+func (pe *ProcessEventUseCase) GetActualGame() *model.GameInfo {
+	return pe.actualGame
 }
 
 func (pe *ProcessEventUseCase) FinishOpenGames() {
