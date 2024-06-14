@@ -10,12 +10,12 @@ jobs:
   generate-coverage:
     runs-on: ubuntu-20.04
     steps:
-      - name: Test
-        run: ls -la
+#      - name: Test
+#        run: ls -la
 #
-#      - name: Update coverage report
-#        uses: ncruces/go-coverage-report@v0
-#        with:
-#          report: true
-#          chart: true
-#          amend: true
+      - name: Update coverage report
+        uses: ncruces/go-coverage-report@v0
+        with:
+          report: true
+          chart: true
+          amend: true
