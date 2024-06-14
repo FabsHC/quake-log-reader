@@ -1,0 +1,16 @@
+name: gocoverage
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Update coverage report
+        uses: ncruces/go-coverage-report@v0
+    #- name: Run tests
+    #  run: cargo test --verbose
