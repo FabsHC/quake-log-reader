@@ -1,35 +1,24 @@
 package main
 
 import (
-	"bufio"
-	"encoding/json"
-	_ "encoding/json"
-	"fmt"
-	"os"
-	"quake-log-reader/internal/aplication/usecase"
+	"quake-log-reader/cmd/handler"
+	"quake-log-reader/cross_cut"
 )
 
-var (
-	validateEvent *usecase.ProcessEventUseCase
+type (
+	InputHandler interface {
+		Execute()
+	}
+
+	Main struct {
+		inputHandler InputHandler
+	}
 )
 
 func main() {
-	validateEvent = usecase.NewProcessEventUseCase()
-	readFileLineByLine()
-	printReport()
-}
-
-func readFileLineByLine() {
-	fmt.Println("Processing...")
-	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan() {
-		validateEvent.Execute(scanner.Text())
+	reg := cross_cut.NewRegister()
+	terminalHandler := &Main{
+		inputHandler: handler.NewTerminalHandler(reg.ProcessEventUseCase),
 	}
-	validateEvent.FinishOpenGames()
-}
-
-func printReport() {
-	report := validateEvent.GetAllGamesResult()
-	fmt.Printf("Done, total matches: %v report below:\n", len(report))
-	_ = json.NewEncoder(os.Stdout).Encode(report)
+	terminalHandler.inputHandler.Execute()
 }
