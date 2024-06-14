@@ -7,10 +7,15 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  generate-coverage:
     runs-on: ubuntu-20.04
     steps:
+      - name: Test
+        run: go test -v ./...
+
       - name: Update coverage report
         uses: ncruces/go-coverage-report@v0
-    #- name: Run tests
-    #  run: cargo test --verbose
+        with:
+          report: true
+          chart: true
+          amend: true
