@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"quake-log-reader/internal/aplication/model"
+	"quake-log-reader/internal/application/model"
 )
 
 type (

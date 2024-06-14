@@ -1,7 +1,7 @@
 package usecase_test
 
 import (
-	"quake-log-reader/internal/aplication/usecase"
+	"quake-log-reader/internal/application/usecase"
 	"slices"
 	"testing"
 )

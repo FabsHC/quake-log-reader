@@ -7,7 +7,7 @@ import (
 	"io"
 	"os"
 	"os/exec"
-	"quake-log-reader/internal/aplication/model"
+	"quake-log-reader/internal/application/model"
 	"slices"
 	"strings"
 	"testing"

@@ -4,7 +4,7 @@ import (
 	"go.uber.org/mock/gomock"
 	"os"
 	"quake-log-reader/cmd/handler"
-	"quake-log-reader/internal/aplication/model"
+	"quake-log-reader/internal/application/model"
 	"quake-log-reader/mock"
 	"testing"
 )

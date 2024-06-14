@@ -10,7 +10,7 @@
 package mock
 
 import (
-	model "quake-log-reader/internal/aplication/model"
+	model "quake-log-reader/internal/application/model"
 	reflect "reflect"
 
 	gomock "go.uber.org/mock/gomock"

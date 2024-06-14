@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"quake-log-reader/internal/aplication/model"
-	"quake-log-reader/internal/aplication/util"
+	"quake-log-reader/internal/application/model"
+	"quake-log-reader/internal/application/util"
 	"strings"
 )
 

@@ -1,6 +1,6 @@
 package cross_cut
 
-import "quake-log-reader/internal/aplication/usecase"
+import "quake-log-reader/internal/application/usecase"
 
 type Register struct {
 	ProcessEventUseCase *usecase.ProcessEventUseCase

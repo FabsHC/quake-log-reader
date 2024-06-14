@@ -65,6 +65,7 @@ When a player kills itself, the killing score is not affected.
 ├── cmd..................: Contains the main file to run the application.
 ├── cross-cut............: contain files that are used in cmd and internal package as well
 ├── internal.............: all core implementation its here.
+│  ├── application.......: folder with core application stuff like DTOs and usecases
 │   ├── model............: All application structures (DTO).
 │   ├── usecase..........: Application core validations.
 │   └── util.............: General stuff.
