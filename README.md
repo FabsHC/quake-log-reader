@@ -61,7 +61,7 @@ When a player kills itself, the killing score is not affected.
 
 ## Project Organization
 ```
-.
+├── bin..................: Contain the shell script to generate mockgen files
 ├── cmd..................: Contains the main file to run the application.
 ├── cross-cut............: contain files that are used in cmd and internal package as well
 ├── internal.............: all core implementation its here.
