@@ -36,7 +36,7 @@ func TestGame(t *testing.T) {
 		t.Error(err)
 	}
 
-	var output = string(stdout.Bytes())
+	var output = stdout.String()
 	fmt.Println(output)
 	if len(output) == 0 {
 		t.Error("fail to process output")
