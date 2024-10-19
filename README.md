@@ -1,6 +1,7 @@
 # quake-log-reader
 ![quake-log-reader](https://img.shields.io/badge/quake--log--reader-gray?logo=go)
 ![technology Go 1.22](https://img.shields.io/badge/technology-go%201.22-blue.svg)
+![Build & Test](https://github.com/FabsHC/quake-log-reader/actions/workflows/go.yml/badge.svg)
 [![Go Coverage](https://github.com/FabsHC/quake-log-reader/wiki/coverage.svg)](https://raw.githack.com/wiki/FabsHC/quake-log-reader/coverage.html)
 
 ## Overview
